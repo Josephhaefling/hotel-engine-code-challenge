@@ -1,9 +1,12 @@
 import React from 'react';
 
+//styled
+import Styled from './text.styled';
+
 const Text = ({ children }) => {
  return (
    <div> 
-     <p>{children}</p>
+     <Text>{children}</Text>
    </div>
  ) 
 }

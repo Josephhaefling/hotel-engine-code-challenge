@@ -1,13 +1,25 @@
 import './App.css';
+
+//components
+import DetailsPage from './pages/details-page.component';
 import LandingPage from './pages/landing-page.component';
+
+//packages
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 
 function App() {  
   return (
-    <div className="App">
-      <LandingPage />
-    </div>
+    <Switch>
+      <Route path='/:repoName' render={(routeProps) => {
+        console.log('route props', routeProps)
+      const result = routeProps.location.props.result;
+      return <DetailsPage result={result} />}
+      } 
+      />
+      <Route path='/' render={(routeProps) => <LandingPage />} />
+    </Switch>
   );
 }
 
-export default App;
+export default withRouter(App);

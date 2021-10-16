@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+
+//styles
+import Styled from './landing-page.styled';
 
 //api calls
-import { getRetros } from '../api/index';
+import { getRepos } from '../api/index';
 
 //components
 import Button from '../components/button/button.component';
 import Card from '../components/card/card.component';
-import Checkbox from '../components/checkbox/checkbox.component';
 import Heading from '../components/heading/heading.component';
 import Input from '../components/input/input.components';
 import Text from '../components/text/text.component';
@@ -21,7 +23,7 @@ const LandingPage = () => {
 
   const searchGitHub = async () => {
     const queryParams = {filterStars, languageInput, topicInput}
-    const data = await getRetros(queryParams) 
+    const data = await getRepos(queryParams) 
     setResults(data?.data?.items)
   }
 
@@ -41,9 +43,9 @@ const LandingPage = () => {
         return null; 
     }
   };
-  console.log('filters', filterStars)
+  console.log('filters', results)
   return (
-    <div>
+    <Styled.LandingPage>
       <Card>
         <form>
           <Card.Header>
@@ -65,7 +67,7 @@ const LandingPage = () => {
       </form>
       </Card>
       <Results searchResults={results} />
-    </div>
+    </Styled.LandingPage>
   )
 };
 
