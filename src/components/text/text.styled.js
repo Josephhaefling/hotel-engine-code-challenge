@@ -3,7 +3,8 @@ import { colors } from '../../helpers/colors';
 
 const Styled = {
   Text: styled.p`
-    color: ${colors.white};
+    color: ${({color}) => color ? `colors${color}` : `${colors.gray}`};
+    font-weight: 600;
   `
 }
 

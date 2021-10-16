@@ -1,9 +1,26 @@
 import React from 'react';
 
-const Button = ({ label, onClick }) => {
+//styles
+import Styled from './button.styled';
+
+//components
+import Text from '../text/text.component';
+
+const Button = ({ label, onClick, selected, size, ...rest }) => {
+
   return (
     <div>
-      <button onClick={onClick} type="button">{label}</button>
+      <Styled.Button 
+        selected={selected} 
+        size={size}
+        onClick={onClick} 
+        type="button" 
+        {...rest}
+      >
+        <Text>
+          {label}
+        </Text>
+      </Styled.Button>
     </div>
   );
 };

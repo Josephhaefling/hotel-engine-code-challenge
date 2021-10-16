@@ -3,10 +3,10 @@ import React from 'react';
 //styled
 import Styled from './text.styled';
 
-const Text = ({ children }) => {
+const Text = ({ children, color }) => {
  return (
    <div> 
-     <Text>{children}</Text>
+     <Styled.Text color={color}>{children}</Styled.Text>
    </div>
  ) 
 }

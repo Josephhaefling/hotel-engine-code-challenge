@@ -8,17 +8,17 @@ import { getRepos } from '../api/index';
 
 //components
 import Button from '../components/button/button.component';
-import Card from '../components/card/card.component';
 import Heading from '../components/heading/heading.component';
 import Input from '../components/input/input.components';
 import Text from '../components/text/text.component';
 import Results from '../components/results/results.component';
+import { useEffect } from 'react/cjs/react.development';
 
 const LandingPage = () => {
   const [filterLanguage, setFilterLanguage] = useState(false);
   const [filterStars, setFilterStars] =useState(false);
   const [languageInput, setLanguageInput] = useState('');
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState();
   const [topicInput, setTopicInput] = useState('');
 
   const searchGitHub = async () => {
@@ -43,29 +43,46 @@ const LandingPage = () => {
         return null; 
     }
   };
-  console.log('filters', results)
+
+  useEffect(() => {
+      console.log('useEffect ran', { results })
+  }, [results, setResults])
+
   return (
     <Styled.LandingPage>
-      <Card>
-        <form>
-          <Card.Header>
-            <Heading level={1}>Welcome to Git Search</Heading>
-          </Card.Header>
-          <Card.Body>
-            <Text>What are you looking for?</Text>
-            <Button label="language" onClick={() => setFilterLanguage(!filterLanguage)} />
-            <Button label="stars" onClick={() => setFilterStars(!filterStars)} />
-            <Input handleChange={handleChange} name="topic" value={topicInput} />
-            {
-              filterLanguage && 
-                <Input handleChange={handleChange} name="language" value={languageInput} />
-            }
-          </Card.Body>
-          <Card.Footer>
-            <Button label="Search" onClick={searchGitHub} />
-          </Card.Footer>
-      </form>
-      </Card>
+      <Styled.SearchContainer>
+        <Styled.Header>
+          <Heading level={1}>Welcome to Git Search</Heading>
+        </Styled.Header>
+        <Styled.Body>
+          <Text>What are you looking for today?</Text>
+          <Styled.ButtonContainer>
+            <Button 
+              label="language" 
+              onClick={() => setFilterLanguage(!filterLanguage)} 
+              selected={filterLanguage}
+              size="small"
+            />
+            <Button 
+              label="stars" 
+              onClick={() => setFilterStars(!filterStars)} 
+              selected={filterStars}
+              size="small"
+            />
+          </Styled.ButtonContainer>
+          
+          <Input handleChange={handleChange} name="topic" value={topicInput} />
+          {
+            filterLanguage && 
+              <Input handleChange={handleChange} name="language" value={languageInput} />
+          }
+          <Button 
+            label="Search" 
+            onClick={searchGitHub} 
+            size="large"
+          />
+        </Styled.Body>
+      </Styled.SearchContainer>
       <Results searchResults={results} />
     </Styled.LandingPage>
   )

@@ -9,9 +9,9 @@ const Result = ({ resultInfo }) => {
   
   return (
     <Styled.Result>
-      <Text>{name}</Text>
-      <Text>{`Language: ${language}`}</Text>
-      <Text>{`Stars: ${stargazers_count}`}</Text>
+      <Text color="white" >{name}</Text>
+      <Text color="white" >{`Language: ${language}`}</Text>
+      <Text color="white" >{`Stars: ${stargazers_count}`}</Text>
     </Styled.Result>
   );
 };

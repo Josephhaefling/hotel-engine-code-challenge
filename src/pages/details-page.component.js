@@ -1,7 +1,11 @@
 import React from 'react';
 
+//styles
+import Styled from './detials-page.styled';
+
 //components
 import Button from '../components/button/button.component';
+import Card from '../components/card/card.component';
 import Heading from '../components/heading/heading.component';
 import Text from '../components/text/text.component';
 
@@ -12,16 +16,24 @@ const DetailsPage = ({ result }) => {
   const { description, language, name, owner, stargazers_count } = result;
   
   return (
-    <div>
-      <Heading level={1}>{name}</Heading>
-      <Text>{`Owner: ${owner.login}`}</Text>
-      <Text>{description}</Text>
-      <Text>{language}</Text>
-      <Text>{`Stars: ${stargazers_count}`}</Text>
-      <Link to={'/'} >
-        <Button label="Back" />
-      </Link>
-    </div>
+    <Styled.DetailPage>
+      <Card>
+        <Card.Header>
+          <Heading level={1}>{name}</Heading>
+        </Card.Header>
+        <Card.Body>
+          <Text>{`Owner: ${owner.login}`}</Text>
+          <Text>{description}</Text>
+          <Text>{language}</Text>
+          <Text>{`Stars: ${stargazers_count}`}</Text>
+        </Card.Body>
+        <Card.Footer>
+          <Link to={'/'} >
+            <Button label="Back" size="large" />
+          </Link>
+        </Card.Footer>
+      </Card>
+    </Styled.DetailPage>
   )
 }
 

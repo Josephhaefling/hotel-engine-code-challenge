@@ -12,10 +12,9 @@ function App() {
   return (
     <Switch>
       <Route path='/:repoName' render={(routeProps) => {
-        console.log('route props', routeProps)
-      const result = routeProps.location.props.result;
-      return <DetailsPage result={result} />}
-      } 
+          const result = routeProps.location.props.result;
+          return <DetailsPage result={result} />}
+        } 
       />
       <Route path='/' render={(routeProps) => <LandingPage />} />
     </Switch>
