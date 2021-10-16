@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Input = ({ handleChange, value }) => {
+const Input = ({ handleChange, name, value }) => {
+  console.log('value', value)
   return (
     <div>
-      <input name="search" onChange={(e) => handleChange(e)} type="text" value={value} />
+      <input name={name} onChange={(e) => handleChange(e)} type="text" value={value} />
     </div>
   );
 };
