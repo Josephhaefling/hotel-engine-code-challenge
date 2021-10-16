@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Input = () => {
+const Input = ({ handleChange, value }) => {
   return (
     <div>
-      <input name="search" type="text" />
+      <input name="search" onChange={(e) => handleChange(e)} type="text" value={value} />
     </div>
   );
 };
