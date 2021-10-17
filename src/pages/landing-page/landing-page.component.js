@@ -1,30 +1,44 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 //styles
 import Styled from './landing-page.styled';
 
 //api calls
-import { getRepos } from '../api/index';
+import { getRepos } from '../../api/index';
 
 //components
-import Button from '../components/button/button.component';
-import Heading from '../components/heading/heading.component';
-import Input from '../components/input/input.components';
-import Text from '../components/text/text.component';
-import Results from '../components/results/results.component';
-import { useEffect } from 'react/cjs/react.development';
+import Button from '../../components/button/button.component';
+import Heading from '../../components/heading/heading.component';
+import Input from '../../components/input/input.components';
+import Text from '../../components/text/text.component';
+import Results from '../../components/results/results.component';
 
-const LandingPage = () => {
-  const [filterLanguage, setFilterLanguage] = useState(false);
-  const [filterStars, setFilterStars] =useState(false);
-  const [languageInput, setLanguageInput] = useState('');
-  const [results, setResults] = useState();
-  const [topicInput, setTopicInput] = useState('');
+const LandingPage = ({ params }) => {
+  const {
+    filterLanguage, 
+    setFilterLanguage,
+    filterStars, 
+    setFilterStars,
+    languageInput,
+    setLanguageInput, 
+    results,
+    setResults,
+    topicInput, 
+    setTopicInput
+  } = params
 
   const searchGitHub = async () => {
     const queryParams = {filterStars, languageInput, topicInput}
     const data = await getRepos(queryParams) 
     setResults(data?.data?.items)
+  }
+
+  const clearSearch = () => {
+    setResults()
+    setFilterStars(false)
+    setFilterLanguage()
+    setLanguageInput('')
+    setTopicInput('')
   }
 
   const handleChange = (e) => {
@@ -43,11 +57,7 @@ const LandingPage = () => {
         return null; 
     }
   };
-
-  useEffect(() => {
-      console.log('useEffect ran', { results })
-  }, [results, setResults])
-
+  
   return (
     <Styled.LandingPage>
       <Styled.SearchContainer>
@@ -58,13 +68,13 @@ const LandingPage = () => {
           <Text>What are you looking for today?</Text>
           <Styled.ButtonContainer>
             <Button 
-              label="language" 
+              label="Language" 
               onClick={() => setFilterLanguage(!filterLanguage)} 
               selected={filterLanguage}
               size="small"
             />
             <Button 
-              label="stars" 
+              label="Stars" 
               onClick={() => setFilterStars(!filterStars)} 
               selected={filterStars}
               size="small"
@@ -76,14 +86,25 @@ const LandingPage = () => {
             filterLanguage && 
               <Input handleChange={handleChange} name="language" value={languageInput} />
           }
-          <Button 
-            label="Search" 
-            onClick={searchGitHub} 
-            size="large"
-          />
+          <Styled.SearchClearContainer>
+            <Button 
+              data-testid="topic-input"
+              label="Search" 
+              onClick={searchGitHub} 
+              size="large"
+            />
+            <Button 
+              data-testid="language-input"
+              label="Clear Search" 
+              onClick={clearSearch} 
+              size="large"
+            />
+          </Styled.SearchClearContainer>
         </Styled.Body>
       </Styled.SearchContainer>
-      <Results searchResults={results} />
+      <Styled.ResultsContainer>
+        <Results searchResults={results} />
+      </Styled.ResultsContainer>
     </Styled.LandingPage>
   )
 };

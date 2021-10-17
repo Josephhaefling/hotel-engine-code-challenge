@@ -4,10 +4,10 @@ import React from 'react';
 import Styled from './detials-page.styled';
 
 //components
-import Button from '../components/button/button.component';
-import Card from '../components/card/card.component';
-import Heading from '../components/heading/heading.component';
-import Text from '../components/text/text.component';
+import Button from '../../components/button/button.component';
+import Card from '../../components/card/card.component';
+import Heading from '../../components/heading/heading.component';
+import Text from '../../components/text/text.component';
 
 //packages
 import { Link } from 'react-router-dom'
@@ -17,7 +17,7 @@ const DetailsPage = ({ result }) => {
   
   return (
     <Styled.DetailPage>
-      <Card>
+      <Styled.Card>
         <Card.Header>
           <Heading level={1}>{name}</Heading>
         </Card.Header>
@@ -27,12 +27,12 @@ const DetailsPage = ({ result }) => {
           <Text>{language}</Text>
           <Text>{`Stars: ${stargazers_count}`}</Text>
         </Card.Body>
-        <Card.Footer>
+        <Styled.CardFooter>
           <Link to={'/'} >
             <Button label="Back" size="large" />
           </Link>
-        </Card.Footer>
-      </Card>
+        </Styled.CardFooter>
+      </Styled.Card>
     </Styled.DetailPage>
   )
 }

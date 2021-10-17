@@ -5,7 +5,7 @@ const Styled = {
     align-items: center;
     display: flex;
     flex-direction: column;
-  `
+  `,
 }
 
 export default Styled;

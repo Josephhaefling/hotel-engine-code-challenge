@@ -3,13 +3,13 @@ import React from 'react';
 //styles
 import Styled from './card.styled';
 
-const Header = ({ children }) => <div>{children}</div>;
-const Body = ({ children }) => <div>{children}</div>;
-const Footer = ({ children }) => <div>{children}</div>;
+const Header = ({ children, ...rest }) => <div {...rest}>{children}</div>;
+const Body = ({ children, ...rest }) => <div {...rest}>{children}</div>;
+const Footer = ({ children, ...rest }) => <div {...rest}>{children}</div>;
 
-const Card = ({ children }) => {
+const Card = ({ children, ...rest }) => {
   return (
-    <Styled.Card>
+    <Styled.Card {...rest}>
       {children}
     </Styled.Card>
   );
