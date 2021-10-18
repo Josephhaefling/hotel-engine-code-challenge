@@ -2,6 +2,7 @@ import React from 'react';
 
 //components
 import Result from '../result/result.component';
+import Text from '../text/text.component';
 
 //styles
 import Styled from './results.styled';
@@ -27,9 +28,19 @@ const Results = ({ searchResults }) => {
     }
   };
 
+  const getResults = () => {
+    if(searchResults) { 
+      return searchResults.length > 0 ?
+        createResultsCards(searchResults) :
+        <Text>
+          Opps, it looks like there are no results for that search.
+        </Text>
+    } else {
+      return ''
+    }
+  }
 
-  const results = createResultsCards();
-
+  const results = getResults();
   return (
     <Styled.Results>
       {results}

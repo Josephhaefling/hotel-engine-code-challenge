@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 //components
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 
 const Styled = {
@@ -10,6 +10,7 @@ const Styled = {
     display: flex;
     flex-direction: column;
     margin: 20px 0;
+    text-align: center;
     width: 100%;
 
     @media(min-width: 768px) {
