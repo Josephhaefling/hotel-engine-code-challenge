@@ -112,7 +112,7 @@ const LandingPage = ({ params }) => {
         <Results searchResults={results} />
       </Styled.ResultsContainer>
     </Styled.LandingPage>
-  )
+  );
 };
 
 export default LandingPage;

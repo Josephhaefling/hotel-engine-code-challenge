@@ -68,7 +68,6 @@ const Styled = {
     display: flex;
     width: 80%;
   `
-
-}
+};
 
 export default Styled;

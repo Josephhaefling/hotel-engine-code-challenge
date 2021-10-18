@@ -31,12 +31,13 @@ const Results = ({ searchResults }) => {
   const getResults = () => {
     if(searchResults) { 
       return searchResults.length > 0 ?
-        createResultsCards(searchResults) :
-        <Text>
-          Opps, it looks like there are no results for that search.
-        </Text>
+        createResultsCards(searchResults) : (
+          <Text>
+            Opps, it looks like there are no results for that search.
+          </Text>
+          );
     } else {
-      return ''
+      return '';
     }
   }
 

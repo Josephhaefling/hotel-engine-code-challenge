@@ -12,7 +12,7 @@ const Heading = ({ children, level }) => {
     <Styled.Heading>
       {createElement(TagType, null, children)}
     </Styled.Heading>
-  )
-}
+  );
+};
 
 export default Heading

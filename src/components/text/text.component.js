@@ -8,7 +8,7 @@ const Text = ({ children, color }) => {
    <div> 
      <Styled.Text color={color}>{children}</Styled.Text>
    </div>
- ) 
+ ); 
 }
 
 export default Text;

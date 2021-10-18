@@ -6,6 +6,6 @@ const Styled = {
     display: flex;
     flex-direction: column;
   `,
-}
+};
 
 export default Styled;

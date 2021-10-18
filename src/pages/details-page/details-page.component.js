@@ -10,7 +10,7 @@ import Heading from '../../components/heading/heading.component';
 import Text from '../../components/text/text.component';
 
 //packages
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const DetailsPage = ({ result }) => {
   const { description, language, name, owner, stargazers_count } = result;
@@ -34,7 +34,7 @@ const DetailsPage = ({ result }) => {
         </Styled.CardFooter>
       </Styled.Card>
     </Styled.DetailPage>
-  )
-}
+  );
+};
 
 export default DetailsPage;

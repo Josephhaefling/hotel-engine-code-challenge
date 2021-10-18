@@ -15,7 +15,7 @@ describe('Landing Page', () => {
     name: 'Test Repo',
     owner: {login: 'Joe'},
     stargazers_count: 10
-  }
+  };
   
   beforeEach(() => {
     detailsPage = render(
@@ -23,7 +23,7 @@ describe('Landing Page', () => {
         <DetailsPage result={result} />
       </BrowserRouter>
     )
-  })
+  });
 
   it('Should render the details page heading', () => {
     const { getByText } = detailsPage;

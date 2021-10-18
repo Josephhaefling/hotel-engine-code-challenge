@@ -14,10 +14,9 @@ const Styled = {
     p {
       color: ${({selected}) => {
        return selected ? `${colors.blue}` : `${colors.gray}`
-    }};
+      }};
     }
-
   `
-}
+};
 
 export default Styled;

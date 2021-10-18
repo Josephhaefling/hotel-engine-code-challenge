@@ -53,4 +53,4 @@ describe('Landing Page', () => {
     const clearSearchButton = getByText('Clear Search');
     expect(clearSearchButton).toBeInTheDocument()
   });
-})
+});

@@ -23,6 +23,6 @@ const Styled = {
   CardFooter: styled(Card.Footer)`
     margin-top: 20px;
   `
-}
+};
 
 export default Styled;
