@@ -1,5 +1,13 @@
 # Git Search
 
+### This application is deployed on heroku: [Git Search.](https://elated-clarke-814828.netlify.app/)
+ 
+### Installation
+ Clone down the github repository
+ cd into your local repo
+ Run npm install in your terminal
+ Run npm start
+
 GitHub: 
 - [Git Search] (https://github.com/Josephhaefling/hotel-engine-code-challenge)
 
