@@ -81,20 +81,26 @@ const LandingPage = ({ params }) => {
             />
           </Styled.ButtonContainer>
           
-          <Input handleChange={handleChange} name="topic" value={topicInput} />
+          <Input 
+            handleChange={handleChange} 
+            name="topic" 
+            value={topicInput} 
+          />
           {
             filterLanguage && 
-              <Input handleChange={handleChange} name="language" value={languageInput} />
+              <Input 
+                handleChange={handleChange} 
+                name="language" 
+                value={languageInput} 
+              />
           }
           <Styled.SearchClearContainer>
             <Button 
-              data-testid="topic-input"
               label="Search" 
               onClick={searchGitHub} 
               size="large"
             />
             <Button 
-              data-testid="language-input"
               label="Clear Search" 
               onClick={clearSearch} 
               size="large"

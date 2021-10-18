@@ -8,10 +8,13 @@ const Result = ({ resultInfo }) => {
   const { language, name, stargazers_count } = resultInfo;
   
   return (
-    <Styled.Result>
+    <Styled.Result data-testid="result">
       <Text color="white" >{name}</Text>
       <Text color="white" >{`Language: ${language}`}</Text>
-      <Text color="white" >{`Stars: ${stargazers_count}`}</Text>
+      <Text 
+        color="white" 
+        data-testid={`${stargazers_count}`} 
+      >{`Stars: ${stargazers_count}`}</Text>
     </Styled.Result>
   );
 };

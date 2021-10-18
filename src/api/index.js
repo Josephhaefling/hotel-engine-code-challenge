@@ -5,6 +5,8 @@ export const getRepos = (queryParams) => {
   const { filterStars, languageInput, topicInput } = queryParams;
   if (filterStars && languageInput && topicInput) {
     return axios.get(`${url}${topicInput}+language:${languageInput}&sort=stars&order=desc`)
+  } else if (filterStars, topicInput) {
+    return axios.get(`${url}${topicInput}&sort=stars&order=desc`)
   } else if (topicInput && languageInput) {
     return axios.get(`${url}${topicInput}+language:${languageInput}`)
     .then(res => res);

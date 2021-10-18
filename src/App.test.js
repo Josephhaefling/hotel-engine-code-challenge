@@ -2,8 +2,7 @@ import React from 'react';
 
 //packages
 import { BrowserRouter } from 'react-router-dom';
-import { fireEvent, render } from '@testing-library/react';
-
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import App from './App';
 
 describe('App', () => {
@@ -37,8 +36,53 @@ describe('App', () => {
     expect(starsButton).toHaveStyle('color: rgb(73, 81, 111)');
   });
 
-  it('Should return results when a search is compelte', () => {
-    
+  it('Should return results when a search is compelte', async() => {
+    const { getAllByTestId, getByTestId, getByText } = app;
+    const topicInput = getByTestId('topic-input');
+    const searchButton = getByText('Search');
+    fireEvent.change(topicInput, {target: {value: 'dynavox'}});
+    fireEvent.click(searchButton);
+    await waitFor(() => {
+      const results = getAllByTestId('result');      
+      expect(results.length).toEqual(7);
+    })
   });
 
+  it.skip('Should filter results by language', async() => {
+    const { getAllByTestId, getByTestId, getByText } = app;
+    const topicInput = getByTestId('topic-input');
+    const searchButton = getByText('Search');
+    const languageTag = getByText('Language');
+
+    fireEvent.click(languageTag);
+    fireEvent.change(topicInput, {target: {value: 'dynavox'}});
+
+    const languageInput = getByTestId('language-input');
+    
+    fireEvent.change(languageInput, {target: {value: 'javascript'}});
+    fireEvent.click(searchButton);
+
+    await waitFor(() => {
+      const results = getAllByTestId('result');
+      expect(results.length).toEqual(1);
+    })
+  });
+
+  it('Should display the details page', async() => {
+    const { getByTestId, getByText } = app;
+    const topicInput = getByTestId('topic-input');
+    const searchButton = getByText('Search');
+    fireEvent.change(topicInput, {target: {value: 'dynavox'}});
+    fireEvent.click(searchButton);
+    
+    await waitFor(() => {
+      const firstResult = getByText('FE-dynavox');
+      fireEvent.click(firstResult);
+    });
+
+    await waitFor(() => {
+      const owner = getByText('Owner: GiftOfGab1');
+      expect(owner).toBeInTheDocument();
+    });
+  });
 })
